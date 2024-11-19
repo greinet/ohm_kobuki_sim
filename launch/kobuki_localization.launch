@@ -1,0 +1,25 @@
+<launch>
+  <!-- Start the move_base node -->
+
+  <!-- Start AMCL for localization -->
+  <node pkg="amcl" type="amcl" name="amcl" output="screen">
+    <param name="odom_frame_id" value="odom"/>
+    <param name="base_frame_id" value="base_link"/>
+    <param name="global_frame_id" value="map"/>
+    <param name="global_costmap/map_topic" value="map"/>
+    <param name="update_min_d" value="0.2"/>
+    <param name="update_min_a" value="0.2"/>
+    <remap from="scan" to="/kobuki/laser" />
+  </node>
+  
+  <!-- Start Map server -->
+  <arg name="map_file" default="$(find ohm_kobuki_sim)/maps/mrcn_map.yaml"/>
+  <node pkg="map_server" type="map_server" name="map_server" args= "$(arg map_file)" />  
+  
+  <!--Statrt RVIZ -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ohm_kobuki_sim)/rviz/navigation.rviz" />
+
+  <!-- static transform from base to laser-->
+  <node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0 0 0 0 0 0 /base_link /laser 100" />
+
+</launch>
