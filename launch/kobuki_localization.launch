@@ -1,6 +1,4 @@
 <launch>
-  <!-- Start the move_base node -->
-
   <!-- Start AMCL for localization -->
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
     <param name="odom_frame_id" value="odom"/>
