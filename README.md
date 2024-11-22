@@ -93,3 +93,10 @@ This command should open up an RVIZ window with our view that shows the mapping 
 
 <img src="./images/gmapping_demo.png"  width="300" height="300">
 
+
+If you encounter errors, you might need to install gmapping:
+
+```
+sudo apt install ros-noetic-gmapping
+```
+
