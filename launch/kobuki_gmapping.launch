@@ -38,7 +38,7 @@
   </node>
 
   <!--Statrt RVIZ -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ohm_mecanum_sim)/rviz/mapping.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ohm_kobuki_sim)/rviz/mapping.rviz" />
   <node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0 0 0 0 0 0 /base_link /laser 100" />
 
 </launch>
